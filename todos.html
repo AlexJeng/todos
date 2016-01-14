@@ -1,0 +1,50 @@
+<head>
+  <title>todos</title>
+</head>
+
+<body>
+  <div class="containers">
+    {{> TodosPanel}}
+  </div>
+</body>
+
+<template name="TodosPanel">
+  <div class="todos-panel">
+    {{> CreateTodoItem}}
+
+    <ul class="todos-list">
+<!-- iterate over all items in a collection -->
+      {{#each items}}
+        <li class="todo-item {{isDoneClass}}">
+          {{> TodoItem}}
+        </li>
+      {{/each}}
+    </ul>
+
+    {{> TodosCount}}
+
+  </div>
+</template>
+
+
+<template name="TodoItem">
+  <div class="done">
+    <input type="checkbox" name="is_done" {{isDoneChecked}} />
+  </div>
+
+  <div class="subject">
+    {{subject}}
+  </div>
+</template>
+
+<template name="CreateTodoItem">
+  <form class="create-todo">
+    <input type="text" placeholder="Create new todo..."/>
+  </form>
+</template>
+
+<template name="TodosCount">
+  <div class="todos-count">
+    {{completedCount}} / {{totalCount}} todos completed
+  </div>
+</template>
