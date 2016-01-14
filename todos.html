@@ -1,9 +1,12 @@
 <head>
-  <title>todos</title>
+  <title>Todos</title>
 </head>
 
 <body>
-  <div class="containers">
+  <div class="container">
+    <div class="login">
+      {{> loginButtons}}
+    </div>
     {{> TodosPanel}}
   </div>
 </body>
@@ -17,6 +20,10 @@
       {{#each items}}
         <li class="todo-item {{isDoneClass}}">
           {{> TodoItem}}
+        </li>
+        {{else}}
+        <li class="todo-item empty">
+          No todos yet.
         </li>
       {{/each}}
     </ul>
