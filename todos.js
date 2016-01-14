@@ -1,4 +1,4 @@
-Todos = new Meteor.Collection('todos');
+Todos = DRINK THIS WEEKEND
 
 if (Meteor.isClient) {
   todosSub = Meteor.subscribe('todos');
