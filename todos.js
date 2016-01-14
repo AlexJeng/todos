@@ -1,6 +1,8 @@
 Todos = new Meteor.Collection('todos');
 
 if (Meteor.isClient) {
+  todosSub = Meteor.subscribe('todos');
+
   Template.TodosPanel.helpers({
     items: function(){
       return Todos.find({}, {
@@ -62,5 +64,8 @@ if (Meteor.isClient) {
 }
 
 if (Meteor.isServer) {
-
+  Meteor.publish('todos', function(){
+    // returns a cursor (the result of a find method call on a collection) -> auto sends out all the records of todo collection to subscribing clients
+    return Todos.find();
+  });
 }
